@@ -1,0 +1,98 @@
+now  before going to UI design , first lets make some constant variable .
+  - create seprate file.
+
+lets start creationg homepage .
+lets delete all the default code and start from scractch.
+
+- lets start work on UI
+- change the background color and appbar first.
+- import the constatnt.dart in our homepage.(because it has our colors).
+
+- lets add some demo questions.
+- now lets create our question widget.
+
+- lets add our homepage
+- change the styling of question.
+- with that our question widget is ready .
+
+ next i m gonna create the 'Next question' button.
+  -add it to floating Action Button
+- lets add some funcnalities to it.
+- like when we click the next question will show.
+- to  do that we need to pass the total number of questionand index to it.
+y 2 question (0,1 ). so it didnot find the thrid .
+- to fix that add an some condition.
+ and now its find , now if it finds that the list has ended , it will do nothing.
+
+ next lets add the options.
+lets create our custom widget for an option.
+lets add it to homescreen .
+- make it click table.
+- we also need to change the color when we click.
+- now thats is cheating we can not let user know the answer even before we select anything.
+- lets add some condition about it if the user has clicked then change the color otherwise dont change the color.
+ue change.
+- now here another problem that when we click the next question , the value of ispressed is unchanged so it show all the answer like before.
+   - lets fix that , we do it in "nextQuestion" function.
+   - that fixed now . on the next part.
+ - lets add some score in our app.
+  lets add some funcnalities to increase the value of our score.
+   when the user answer correctly of a question then the the score will go up by 1 point.
+    - lets remove the gesture detector from inside of optioncard and put it in parent widget.
+     and thats a problem . it increase even through the user already selected once.
+     let fix that.
+  - lets make its value to false on next question.
+  - now it's working fine...
+   - calculating coreect score.
+ 
+  - alright everything looks good so far but , i want to change something.
+     you see when the color of our optioncard option chnage the text on the red area is little 
+      i want to mke it so when the color change the color change the color of our text
+
+      -now  let's create a result box , at the end of our quiz . its goona show result of user.
+       - let's create our dialog box in a seprate file.
+        - thats our result box .
+
+        - now let add a button to start quiz from start.
+         now we need a function to do work , we will create that in homescreen.dart
+         -looks like we have another problem here , we can not select the wrong option one.
+
+- let's start working on database.
+   goto 'firebase.google.com'
+   you have to log in to use the firebase service.
+   once logged in, clixk on 'go to console' and then create a project.
+   once create then click on realtime database.
+   create a database in 'test mode'.
+
+-let's make a seprate file for database Action.
+   to connect to database , firebase has it's own pakage for flutter , but thats 
+   too advance subjects , so will use the lightweight 'http' pakage.
+   enter 'flutter pub and http' in terminal.
+
+-let's start creating json data so we have to convert our question to .json format.
+  to do that we use another pakage called 'convert' which is built in 'dart'.
+
+-let's try to add a question in database.
+  create an object for'DBconnect ' class in main.dart and add a question.
+  hot restart to run the main method;
+  thats how you add a question in database.
+
+lest fetch the question from the database .
+  use the same method we used to add question.
+   thats how you fetch question from the database.
+
+   - lets add some more data to  database.
+      ok lets try to fetch data.
+      the function is already there. so just hot restart it.
+      so we can see the question we added.
+
+      - time to display the question from our database in our app.
+         first of all when we fetch the data from the database its ina 
+         'Map<dynamic,dynamic>' format . we have to convert it to 'Map<String,
+         dynamic>'.
+          - then we need each 'key , value' pair to question.
+          -then we need some place to save these question we created.
+          - this error occured becuase our 'options' is in Map<String,dynamic> format.
+          - we need that in Map<String,bool> format to convert it use Map.case method
+
+          - now we need to replace the in app question to question we fetched from database.*
